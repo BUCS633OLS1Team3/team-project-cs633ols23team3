@@ -20,6 +20,13 @@ def index(request):
 
     if request.user.is_authenticated:
 
+        return render(request, "academiadocapp/index.html", {
+
+            "user": request.user,
+
+        })
+
+    else:
         return render(request, "academiadocapp/login.html", {
 
             "user": request.user,
@@ -69,7 +76,7 @@ def register(request):
         if (user.is_authenticated):
             return redirect("home")
         else:
-            return render(request, "academiadoc/register.html")
+            return render(request, "academiadocapp/register.html")
 
 
 def login_view(request):
@@ -93,4 +100,4 @@ def login_view(request):
         if (user.is_authenticated):
             return redirect("home")
         else:
-            return render(request, "academiadoc/login.html")
+            return render(request, "academiadocapp/login.html")
