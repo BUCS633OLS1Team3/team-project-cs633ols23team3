@@ -101,3 +101,10 @@ def login_view(request):
             return redirect("home")
         else:
             return render(request, "academiadocapp/login.html")
+
+
+
+def logout_view(request):
+    logout(request)
+    messages.warning(request,('Log Out Successful'))
+    return redirect('home')
