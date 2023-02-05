@@ -1,0 +1,49 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<div class="container-fluid">
+  {% if messages %} {% for message in messages %}
+  <div class="container-fluid" style="padding-top: 10px">
+    <div
+      class="alert alert-{{ message.tags }} alert-dismissible fade show"
+      role="alert"
+    >
+      {{ message }}
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="close"
+      ></button>
+    </div>
+  </div>
+  {% endfor %} {% endif %}
+</div>
+<div class="row" style="margin-top: 4rem">
+  <div class="col-2" style="border-right: 6px solid rgb(115, 176, 247)">
+    <div class="d-flex flex-column">
+      <div style="padding: 10px">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          style="width: -webkit-fill-available"
+        >
+          Submit a Request
+        </button>
+      </div>
+      <div style="padding: 10px">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          style="width: -webkit-fill-available"
+        >
+          Check Status
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-10">
+    <div class="container"></div>
+  </div>
+</div>
+
+{% endblock %}
