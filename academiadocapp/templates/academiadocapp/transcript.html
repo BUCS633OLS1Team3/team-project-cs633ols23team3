@@ -21,21 +21,71 @@
   <div class="col-2" style="border-right: 6px solid rgb(115, 176, 247)">
     <div class="d-flex flex-column">
       <div style="padding: 10px">
-        <button
-          type="button"
-          class="btn btn-secondary"
-          style="width: -webkit-fill-available"
-        >
-          Submit a Request
+        <button class="btn btn-secondary btn-lg">
+          <div class="d-lg-none">
+            <a
+              class="text-decoration-none text-dark"
+              href="{% url 'home'%}"
+              data-bs-toggle="tooltip"
+              data-bs-title="Home"
+            >
+              <img
+                class="pe-2"
+                src="{% static 'icons/AcademiaDoc_logo.png' %}"
+                alt=""
+                height="40"
+              />
+            </a>
+          </div>
+
+          <div class="d-none d-lg-block">
+            <a
+              class="text-decoration-none text-dark hidden-sm"
+              href="{% url 'home'%}"
+            >
+              <img
+                class="pe-2"
+                src="{% static 'icons/request.png' %}"
+                alt="request"
+                height="40"
+              />
+              Submit Request
+            </a>
+          </div>
         </button>
       </div>
       <div style="padding: 10px">
-        <button
-          type="button"
-          class="btn btn-secondary"
-          style="width: -webkit-fill-available"
-        >
-          Check Status
+        <button class="btn btn-secondary btn-lg" style="width: max-content">
+          <div class="d-lg-none">
+            <a
+              class="text-decoration-none text-dark"
+              href="{% url 'home'%}"
+              data-bs-toggle="tooltip"
+              data-bs-title="Home"
+            >
+              <img
+                class="pe-2"
+                src="{% static 'icons/AcademiaDoc_logo.png' %}"
+                alt=""
+                height="40"
+              />
+            </a>
+          </div>
+
+          <div class="d-none d-lg-block">
+            <a
+              class="text-decoration-none text-dark hidden-sm"
+              href="{% url 'home'%}"
+            >
+              <img
+                class="pe-2"
+                src="{% static 'icons/status.png' %}"
+                alt=""
+                height="40"
+              />
+              Check Status
+            </a>
+          </div>
         </button>
       </div>
     </div>
