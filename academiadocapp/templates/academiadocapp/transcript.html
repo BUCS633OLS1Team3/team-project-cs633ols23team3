@@ -20,18 +20,22 @@
 <div class="row" style="margin-top: 4rem">
   <div class="col-2" style="border-right: 6px solid rgb(115, 176, 247)">
     <div class="d-flex flex-column">
-      <div style="padding: 10px">
-        <button class="btn btn-secondary btn-lg">
+      <div>
+        <button
+          class="btn btn-secondary btn-lg"
+          style="width: -webkit-fill-available"
+        >
           <div class="d-lg-none">
             <a
-              class="text-decoration-none text-dark"
+              class="text-decoration-none"
+              style="color: aliceblue"
               href="{% url 'home'%}"
               data-bs-toggle="tooltip"
               data-bs-title="Home"
             >
               <img
                 class="pe-2"
-                src="{% static 'icons/AcademiaDoc_logo.png' %}"
+                src="{% static 'icons/request.png' %}"
                 alt=""
                 height="40"
               />
@@ -40,8 +44,9 @@
 
           <div class="d-none d-lg-block">
             <a
-              class="text-decoration-none text-dark hidden-sm"
+              class="text-decoration-none hidden-sm"
               href="{% url 'home'%}"
+              style="color: aliceblue"
             >
               <img
                 class="pe-2"
@@ -49,23 +54,27 @@
                 alt="request"
                 height="40"
               />
-              Submit Request
+              Requests
             </a>
           </div>
         </button>
       </div>
-      <div style="padding: 10px">
-        <button class="btn btn-secondary btn-lg" style="width: max-content">
+      <div style="padding-top: 1rem">
+        <button
+          class="btn btn-secondary btn-lg"
+          style="width: -webkit-fill-available"
+        >
           <div class="d-lg-none">
             <a
-              class="text-decoration-none text-dark"
+              class="text-decoration-none"
+              style="color: aliceblue"
               href="{% url 'home'%}"
               data-bs-toggle="tooltip"
               data-bs-title="Home"
             >
               <img
                 class="pe-2"
-                src="{% static 'icons/AcademiaDoc_logo.png' %}"
+                src="{% static 'icons/status.png' %}"
                 alt=""
                 height="40"
               />
@@ -74,8 +83,9 @@
 
           <div class="d-none d-lg-block">
             <a
-              class="text-decoration-none text-dark hidden-sm"
+              class="text-decoration-none hidden-sm"
               href="{% url 'home'%}"
+              style="color: aliceblue"
             >
               <img
                 class="pe-2"
@@ -92,7 +102,75 @@
   </div>
 
   <div class="col-10">
-    <div class="container"></div>
+    <div class="container">
+      <div class="row no-gutters shadow-lg">
+        <div class="col bg-white p-5">
+          <h4 class="pb-3" style="text-align: center">
+            Transcript Request Form
+          </h4>
+          <p style="font-weight: bold">Fill out Student information below</p>
+          <div class="form-style">
+            <form action="{% url 'transcript' %}" method="post">
+              {% csrf_token %}
+              <div class="form-group pb-3">
+                <input
+                  type="text"
+                  name="username"
+                  placeholder="Username"
+                  class="form-control"
+                  required
+                  autofocus
+                />
+              </div>
+
+              <div class="form-group pb-3">
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email"
+                  class="form-control"
+                  required
+                />
+              </div>
+
+              <div class="form-group pb-3">
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  class="form-control"
+                />
+              </div>
+
+              <div class="form-group pb-3">
+                <input
+                  type="password"
+                  name="confirmation"
+                  placeholder="Confirm Password"
+                  class="form-control"
+                />
+              </div>
+
+              <div class="pt-4 text-center">
+                Already have an account?
+                <a href="{% url 'login' %}">Sign In here.</a>
+              </div>
+
+              <div class="text-center">
+                <button
+                  id="register"
+                  type="submit"
+                  href="#"
+                  class="btn btn-lg btn-primary btn-block mt-3"
+                >
+                  Register
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
