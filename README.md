@@ -16,7 +16,9 @@ thank you for starting this repository ! good luck with the project !
 [![Language](https://img.shields.io/badge/Language-CSS-brightgreen)](https://getbootstrap.com/docs/4.0/getting-started/introduction/)
 [![Language](https://img.shields.io/badge/Language-HTML-brightgreen)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 
-#Insert Logo here>>
+## .
+
+![Project Logo](static/assets/logobackground.png)
 
 ## Requirements (Prerequisites)
 
@@ -50,7 +52,8 @@ Follow the steps below to install an instance of this project.
 
 ## Screenshots
 
-Insert Snapshots here>>.
+.
+![App screenshot](static/assets/screenshot1.png)
 
 ## Features
 

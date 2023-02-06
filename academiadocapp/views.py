@@ -108,3 +108,8 @@ def logout_view(request):
     logout(request)
     messages.warning(request,('Log Out Successful'))
     return redirect('home')
+
+
+def transcript(request):
+
+    return render(request, "academiadocapp/transcript.html")
