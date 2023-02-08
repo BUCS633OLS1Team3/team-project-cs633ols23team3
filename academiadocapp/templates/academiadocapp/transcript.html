@@ -46,7 +46,7 @@
             <a
               class="text-decoration-none hidden-sm"
               href="{% url 'home'%}"
-              style="color: aliceblue"
+              style="color: aliceblue; white-space: nowrap"
             >
               <img
                 class="pe-2"
@@ -85,7 +85,7 @@
             <a
               class="text-decoration-none hidden-sm"
               href="{% url 'home'%}"
-              style="color: aliceblue"
+              style="color: aliceblue; white-space: nowrap"
             >
               <img
                 class="pe-2"
@@ -141,6 +141,7 @@
                   name="gradyear"
                   placeholder="Graduation Year"
                   class="form-control"
+                  required
                 />
               </div>
 
@@ -174,8 +175,9 @@
                   <input
                     type="radio"
                     id="personal"
-                    name="radio"
+                    name="purpose"
                     value="personal"
+                    required
                   />
                   <label style="padding-right: 0.5rem" for="personal"
                     >Personal</label
@@ -183,27 +185,38 @@
                   <input
                     type="radio"
                     id="official"
-                    name="radio"
+                    name="purpose"
                     value="official"
+                    required
                   />
                   <label for="css">Official</label></span
                 >
               </div>
 
               <div class="form-group pb-3">
-                <input type="checkbox" id="agree" name="agree" value="agree" />
-                <label for="agree" style="padding-left: 0.5rem">
-                  I hereby give AcademiaDoc permission to send a digital copy of
-                  my official Transcripts to the Delivery email address
-                  above</label
-                >
+                <span style="display: flex">
+                  <input
+                    type="checkbox"
+                    id="agree"
+                    name="agree"
+                    value="agree"
+                    required
+                  />
+                  <label
+                    for="agree"
+                    style="padding-left: 0.5rem; font-size: small"
+                  >
+                    I hereby give AcademiaDoc permission to send a digital copy
+                    of my official Transcripts to the Delivery email address
+                    above</label
+                  >
+                </span>
               </div>
 
               <div class="text-center">
                 <button
                   id="register"
                   type="submit"
-                  href="#"
                   class="btn btn-lg btn-primary btn-block mt-3"
                 >
                   Submit
