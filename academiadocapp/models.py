@@ -12,6 +12,8 @@ class User(AbstractUser):
         ('Faculty', 'Faculty'),
     ]
     role = models.CharField(max_length=7, choices=CATEGORY, default='Alumni')
+    student_id = models.IntegerField(default=0,blank=True)
+    grad_year = models.IntegerField(default=1900,blank=True)
 
     def __str__(self):
         return self.username
@@ -128,5 +130,3 @@ class Transcripts(models.Model):
 
     def __str__(self):
         return self.alumni
-
-

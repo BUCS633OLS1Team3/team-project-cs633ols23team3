@@ -11,4 +11,4 @@ admin.site.register(Directory)
 admin.site.register(Transcripts)
 
 
-UserAdmin.fieldsets += ('Custom fields set', {'fields': ('bio', 'role', 'profile_pic',)}),
+UserAdmin.fieldsets += ('Custom fields set', {'fields': ('bio', 'role', 'profile_pic', 'student_id', 'grad_year')}),
