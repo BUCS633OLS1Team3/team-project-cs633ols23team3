@@ -121,3 +121,8 @@ def transcript(request):
             messages.success(request,('Request Submitted Successfully'))
 
     return render(request, "academiadocapp/transcript.html")
+
+
+def status(request):
+
+    return render(request, "academiadocapp/status.html")
