@@ -114,7 +114,9 @@ def transcript(request):
     user = request.user
     if user.is_authenticated:
         if request.method == 'POST':
-            transcript_request = Requests(creator=user, delivery_email=request.POST["email"], purpose=request.POST["purpose"], agreement=request.POST["name"])
+            if request.POST.get('agree'):
+                agreement = True
+            transcript_request = Requests(creator=user, delivery_email=request.POST["email"], purpose=request.POST["purpose"], agreement=agreement)
             transcript_request.save()
             messages.success(request,('Request Submitted Successfully'))
 
