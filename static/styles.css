@@ -28,7 +28,7 @@ body {
   margin-left: 0px;
   margin-right: 0px;
   margin-top: 0px;
-  background-color: green;
+  background-color: rgb(38, 140, 223);
   border-radius: 50%;
   display: inline-block;
 }
@@ -37,5 +37,6 @@ body {
 }
 
 .request-item:hover {
-  background-color: yellow;
+  background-color: rgb(117, 199, 224);
+  cursor: pointer;
 }
