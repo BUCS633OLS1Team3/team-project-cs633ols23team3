@@ -169,7 +169,7 @@
             <div class="list-group">
                 {% for request in requests %}
                 
-              <a href="" onclick="show_details(event, {{ request.id }})" class="list-group-item list-group-item-action">
+              <a onclick="show_details(event, {{ request.id }})" class="list-group-item list-group-item-action request-item">
                 Request ID: TRR{{ request.reference }} <span class="date">requested on {{ request.date }}</span>
               </a>
               {% endfor %}

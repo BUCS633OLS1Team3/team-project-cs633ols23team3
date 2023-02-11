@@ -35,3 +35,7 @@ body {
 .big-dot i {
   font-size: 12px;
 }
+
+.request-item:hover {
+  background-color: yellow;
+}
