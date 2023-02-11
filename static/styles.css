@@ -9,8 +9,10 @@ body {
   background-color: blue;
 }
 .track-line {
-  height: 2px !important;
-  background-color: green;
+  height: 6px !important;
+  background-color: #268cdf;
+  opacity: inherit;
+  border: none;
 }
 .dot {
   height: 10px;
