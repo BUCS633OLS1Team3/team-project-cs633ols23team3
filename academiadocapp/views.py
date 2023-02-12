@@ -111,6 +111,7 @@ def logout_view(request):
 
 
 def transcript(request):
+
     user = request.user
     if user.is_authenticated:
         if request.method == 'POST':
@@ -125,4 +126,13 @@ def transcript(request):
 
 def status(request):
 
-    return render(request, "academiadocapp/status.html")
+    user = request.user
+    transcript_requests = Requests.objects.filter(creator=user).all()
+    count = Requests.objects.filter(creator=user).count()
+
+    context = {
+        'requests' : transcript_requests,
+        'count' : count
+    }
+
+    return render(request, "academiadocapp/status.html", context)
