@@ -17,4 +17,12 @@ function show_details(event, id) {
   }
 
   document.querySelector(`#status-${id}`).style.display = "block";
+
+  var list_element = document.getElementsByClassName("list-group-item");
+
+  for (var i = 0; i < list_element.length; i++) {
+    list_element[i].classList.remove("active");
+  }
+
+  document.querySelector(`#request-${id}`).classList.add("active");
 }
