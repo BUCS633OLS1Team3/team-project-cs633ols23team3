@@ -122,33 +122,52 @@
             >
               <span class="d-flex justify-content-center align-items-center big-dot dot"><i class="fa fa-check text-white"></i></span>
               <hr class="flex-fill track-line" />
+              {% if request.approve_date %}
               <span class="d-flex justify-content-center align-items-center big-dot dot"><i class="fa fa-check text-white"></i></span>
               <hr class="flex-fill track-line" />
+              {% else %}
+              <span class="d-flex justify-content-center align-items-center big-dot-red dot"><i class="fa text-white"></i></span>
+              <hr class="flex-fill track-line-amber" /> 
+              {% endif %}
+              {% if request.process_date %}
               <span class="d-flex justify-content-center align-items-center big-dot dot"><i class="fa fa-check text-white"></i></span>
               <hr class="flex-fill track-line" />
+              {% else %}
+              <span class="d-flex justify-content-center align-items-center big-dot-red dot"><i class="fa text-white"></i></span>
+              <hr class="flex-fill track-line-amber" />
+              {% endif %}
+              {% if request.complete_date %}
               <span class="d-flex justify-content-center align-items-center big-dot dot"><i class="fa fa-check text-white"></i></span>
-              <hr class="flex-fill track-line" />
+              <hr class="flex-fill track-line-amber" />
+              {% else %}
+              <span class="d-flex justify-content-center align-items-center big-dot-red dot"><i class="fa text-white"></i></span>
+              <hr class="flex-fill track-line-amber" />
+              {% endif %}
+              {% if request.close_date %}
               <span class="d-flex justify-content-center align-items-center big-dot dot"><i class="fa fa-check text-white"></i></span>
+              {% else %}
+              <span class="d-flex justify-content-center align-items-center big-dot-red dot"><i class="fa text-white"></i></span>
+              {% endif %}
             </div>
             <div
               class="d-flex flex-row justify-content-between align-items-center"
             >
               <div class="d-flex flex-column align-items-start" style="font-size: smaller; font-weight: bolder;">
-                <span>{{ request.date|date:"d M Y" }}</span><span>Submitted</span>
+                <span>{{ request.date|date:"d M" }}</span><span>Submitted</span>
               </div>
-              <div class="d-flex flex-column justify-content-center" style="font-size: smaller;">
-                <span>{{ request.approve_date|date:"d M Y" }}</span><span>Approved</span>
+              <div class="d-flex flex-column justify-content-center" style="font-size: smaller; font-weight: bolder;">
+                <span>{{ request.approve_date|date:"d M" }}</span><span>Approved</span>
               </div>
               <div
-                class="d-flex flex-column justify-content-center align-items-center" style="font-size: smaller;"
+                class="d-flex flex-column justify-content-center align-items-center" style="font-size: smaller; font-weight: bolder;"
               >
-                <span>{{ request.process_date|date:"d M Y" }}</span><span>Processed</span>
+                <span>{{ request.process_date|date:"d M" }}</span><span>Processed</span>
               </div>
-              <div class="d-flex flex-column align-items-center" style="font-size: smaller;">
-                <span>{{ request.complete_date|date:"d M Y" }}</span><span>Completed</span>
+              <div class="d-flex flex-column align-items-center" style="font-size: smaller; font-weight: bolder;">
+                <span>{{ request.complete_date|date:"d M" }}</span><span>Completed</span>
               </div>
-              <div class="d-flex flex-column align-items-end" style="font-size: smaller;">
-                <span>{{ request.close_date|date:"d M Y" }}</span><span>Closed</span>
+              <div class="d-flex flex-column align-items-end" style="font-size: smaller; font-weight: bolder;">
+                <span>{{ request.close_date|date:"d M" }}</span><span>Closed</span>
               </div>
             </div>
           </div>
