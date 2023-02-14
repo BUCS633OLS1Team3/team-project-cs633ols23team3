@@ -136,3 +136,12 @@ def status(request):
     }
 
     return render(request, "academiadocapp/status.html", context)
+
+
+def admin_page(request):
+
+    context = {
+  
+    }
+
+    return render(request, "academiadocapp/admin-page.html", context)

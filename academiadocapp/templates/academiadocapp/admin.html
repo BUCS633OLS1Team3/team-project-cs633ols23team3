@@ -1,0 +1,106 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<div class="container-fluid">
+  {% if messages %} {% for message in messages %}
+  <div class="container-fluid" style="padding-top: 10px">
+    <div
+      class="alert alert-{{ message.tags }} alert-dismissible fade show"
+      role="alert"
+    >
+      {{ message }}
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="close"
+      ></button>
+    </div>
+  </div>
+  {% endfor %} {% endif %}
+</div>
+<div class="row" style="margin-top: 4rem">
+  <div class="col-2" style="border-right: 6px solid rgb(115, 176, 247)">
+    <div class="d-flex flex-column">
+      <div>
+        <button
+          class="btn btn-secondary btn-lg"
+          style="width: -webkit-fill-available"
+        >
+          <div class="d-lg-none">
+            <a
+              class="text-decoration-none"
+              style="color: aliceblue"
+              href="{% url 'transcript' %}"
+              data-bs-toggle="tooltip"
+              data-bs-title="Home"
+            >
+              <img
+                class="pe-2"
+                src="{% static 'icons/request.png' %}"
+                alt="request"
+                height="40"
+              />
+            </a>
+          </div>
+
+          <div class="d-none d-lg-block">
+            <a
+              class="text-decoration-none hidden-sm"
+              href="{% url 'transcript' %}"
+              style="color: aliceblue; white-space: nowrap"
+            >
+              <img
+                class="pe-2"
+                src="{% static 'icons/request.png' %}"
+                alt="request"
+                height="40"
+              />
+              Requests
+            </a>
+          </div>
+        </button>
+      </div>
+      <div style="padding-top: 1rem">
+        <button
+          class="btn btn-primary btn-lg"
+          style="width: -webkit-fill-available"
+        >
+          <div class="d-lg-none">
+            <a
+              class="text-decoration-none"
+              style="color: aliceblue"
+              href="{% url 'status' %}"
+              data-bs-toggle="tooltip"
+              data-bs-title="Home"
+            >
+              <img
+                class="pe-2"
+                src="{% static 'icons/status.png' %}"
+                alt=""
+                height="40"
+              />
+            </a>
+          </div>
+
+          <div class="d-none d-lg-block">
+            <a
+              class="text-decoration-none hidden-sm"
+              href="{% url 'status' %}"
+              style="color: aliceblue; white-space: nowrap"
+            >
+              <img
+                class="pe-2"
+                src="{% static 'icons/status.png' %}"
+                alt=""
+                height="40"
+              />
+              Check Status
+            </a>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-10"><h1>ADMIN PAGE</h1></div>
+</div>
+{% endblock %}
