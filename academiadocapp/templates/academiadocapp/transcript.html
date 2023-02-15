@@ -98,6 +98,45 @@
           </div>
         </button>
       </div>
+      <div style="padding-top: 1rem">
+        <button
+          class="btn btn-secondary btn-lg"
+          style="width: -webkit-fill-available"
+        >
+          <div class="d-lg-none">
+            <a
+              class="text-decoration-none"
+              style="color: aliceblue"
+              href="{% url 'admin-page' %}"
+              data-bs-toggle="tooltip"
+              data-bs-title="Home"
+            >
+              <img
+                class="pe-2"
+                src="{% static 'icons/admin.png' %}"
+                alt=""
+                height="40"
+              />
+            </a>
+          </div>
+
+          <div class="d-none d-lg-block">
+            <a
+              class="text-decoration-none hidden-sm"
+              href="{% url 'admin-page' %}"
+              style="color: aliceblue; white-space: nowrap"
+            >
+              <img
+                class="pe-2"
+                src="{% static 'icons/admin.png' %}"
+                alt=""
+                height="40"
+              />
+              Admin
+            </a>
+          </div>
+        </button>
+      </div>
     </div>
   </div>
 

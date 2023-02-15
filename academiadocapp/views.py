@@ -140,8 +140,12 @@ def status(request):
 
 def admin_page(request):
 
-    context = {
-  
-    }
+    user = request.user
+    transcript_requests = Requests.objects.all()
+    count = Requests.objects.all().count()
 
-    return render(request, "academiadocapp/admin-page.html", context)
+    context = {
+        'requests' : transcript_requests,
+        'count' : count
+    }
+    return render(request, "academiadocapp/admin.html", context)
