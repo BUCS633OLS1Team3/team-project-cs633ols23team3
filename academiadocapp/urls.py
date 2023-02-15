@@ -9,5 +9,6 @@ urlpatterns = [
     path('transcript/', views.transcript, name='transcript'),
     path('status/', views.status, name='status'),
     path('admin-page/', views.admin_page, name='admin-page'),
+    path('update/<request_id>/', views.update_status, name='update-status'),
 
 ]
