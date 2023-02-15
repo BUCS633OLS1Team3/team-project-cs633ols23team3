@@ -22,7 +22,7 @@
     <div class="d-flex flex-column">
       <div>
         <button
-          class="btn btn-primary btn-lg"
+          class="btn btn-secondary btn-lg"
           style="width: -webkit-fill-available"
         >
           <div class="d-lg-none">
@@ -100,7 +100,7 @@
       </div>
       <div style="padding-top: 1rem">
         <button
-          class="btn btn-secondary btn-lg"
+          class="btn btn-primary btn-lg"
           style="width: -webkit-fill-available"
         >
           <div class="d-lg-none">
@@ -141,133 +141,70 @@
   </div>
 
   <div class="col-10">
+    <div class="container">
     <div class="container-fluid col-sm-12 col-md-12 col-lg-8">
-      <div class="row no-gutters shadow-lg">
-        <div class="col-2 bg-white"></div>
-        <div class="col-sm-12 col-md-12 col-lg-8 bg-white p-5">
-          <h4 class="pb-3" style="text-align: center">
-            Transcript Request Form
-          </h4>
-          <br />
-          <p style="font-weight: bold">Fill out Student information below</p>
-          <div class="form-style">
-            <form action="{% url 'transcript' %}" method="post">
-              {% csrf_token %}
-              <div class="form-group pb-3">
-                <input
-                  type="text"
-                  name="studentname"
-                  placeholder="Student Fullname"
-                  class="form-control"
-                  required
-                  autofocus
-                />
-              </div>
+        <div class="row no-gutters shadow-lg">
+          <div class="col-2 bg-white"></div>
+          <div class="col-sm-12 col-md-12 col-lg-8 bg-white p-5">
+            <h4 class="pb-3" style="text-align: center">
+              Update Request Status
+            </h4>
 
-              <div class="form-group pb-3">
-                <input
-                  type="number"
-                  name="studentnumber"
-                  placeholder="Student ID Number"
-                  class="form-control"
-                  required
-                />
-              </div>
+            <div class="form-style">
+              <form action="/admin-page/" method="post">
+                <input type="hidden" name="csrfmiddlewaretoken" value="LKTw0VId5H60Wx4GlvuXGM5zIpt5xoluKWa54NlaljseNOHYfBUv55v6Xz2XP3VB">
+                <div class="form-group pb-3">
+                  <input type="text" name="studentname" placeholder="Student Fullname" class="form-control" required="" autofocus="">
+                </div>
+  
+                <div class="form-group pb-3">
+                  <input type="number" name="studentnumber" placeholder="Student ID Number" class="form-control" required="">
+                </div>
+  
+                <div class="form-group pb-3">
+                  <input type="number" name="gradyear" placeholder="Graduation Year" class="form-control" required="">
+                </div>
+  
+                <div class="form-group pb-3">
+                  <input type="tel" name="phone" placeholder="Phone Number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control">
+                </div>
+                <br>
+  
+                <div class="text-center">
+                  <button id="register" type="submit" class="btn btn-lg btn-primary btn-block mt-3">
+                    Submit
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="col-2 bg-white"></div>
+        </div>
+      </div>
+    <div class="row mt-5">
+      <div class="col-md-12">
+        <div>
+          <div
+            class="d-flex flex-row justify-content-between align-items-center order"
+          >
+            
+              <h6 style="font-weight: bold; padding: 0px 0px 5px 10px;">All your requests [{{ count }}]</h4>
+      
+           
+          </div>
+          <div class="list-group">
+              {% for request in requests %}
 
-              <div class="form-group pb-3">
-                <input
-                  type="number"
-                  name="gradyear"
-                  placeholder="Graduation Year"
-                  class="form-control"
-                  required
-                />
-              </div>
+            <a id="request-{{ request.id }}" onclick="show_details(event, {{ request.id }})" class="list-group-item list-group-item-action d-flex justify-content-between">
+               <div> Request ID: TRR{{ request.reference }}<span class="date" style="padding-left: 1rem;">requested on {{ request.date }}</span></div><button type="button" class="btn btn-warning btn-sm">Update Status</button>
+            </a>
 
-              <div class="form-group pb-3">
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="Phone Number"
-                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                  class="form-control"
-                />
-              </div>
-              <br />
-              <p style="font-weight: bold">
-                Fill out Delivery information below
-              </p>
-
-              <div class="form-group pb-3">
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Delivery Email"
-                  class="form-control"
-                  required
-                />
-              </div>
-
-              <div class="form-group pb-3">
-                <span
-                  ><b style="padding-right: 0.5rem">Purpose: </b>
-                  <input
-                    type="radio"
-                    id="personal"
-                    name="purpose"
-                    value="personal"
-                    required
-                  />
-                  <label style="padding-right: 0.5rem" for="personal"
-                    >Personal</label
-                  >
-                  <input
-                    type="radio"
-                    id="official"
-                    name="purpose"
-                    value="official"
-                    required
-                  />
-                  <label for="css">Official</label></span
-                >
-              </div>
-
-              <div class="form-group pb-3">
-                <span style="display: flex">
-                  <input
-                    type="checkbox"
-                    id="agree"
-                    name="agree"
-                    value="agree"
-                    required
-                  />
-                  <label
-                    for="agree"
-                    style="padding-left: 0.5rem; font-size: small"
-                  >
-                    I hereby give AcademiaDoc permission to send a digital copy
-                    of my official Transcripts to the Delivery email address
-                    above</label
-                  >
-                </span>
-              </div>
-
-              <div class="text-center">
-                <button
-                  id="register"
-                  type="submit"
-                  class="btn btn-lg btn-primary btn-block mt-3"
-                >
-                  Submit
-                </button>
-              </div>
-            </form>
+            
+            {% endfor %}
           </div>
         </div>
-        <div class="col-2 bg-white"></div>
       </div>
     </div>
-  </div>
+  </div></div>
 </div>
-
 {% endblock %}

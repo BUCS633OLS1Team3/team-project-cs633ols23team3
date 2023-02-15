@@ -136,3 +136,16 @@ def status(request):
     }
 
     return render(request, "academiadocapp/status.html", context)
+
+
+def admin_page(request):
+
+    user = request.user
+    transcript_requests = Requests.objects.all()
+    count = Requests.objects.all().count()
+
+    context = {
+        'requests' : transcript_requests,
+        'count' : count
+    }
+    return render(request, "academiadocapp/admin.html", context)
