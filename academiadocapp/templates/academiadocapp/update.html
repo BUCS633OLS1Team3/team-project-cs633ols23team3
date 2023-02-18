@@ -158,12 +158,8 @@
             </h4>
 
             <div class="form-style">
-              <form action="/update-status/" method="post">
-                <input
-                  type="hidden"
-                  name="csrfmiddlewaretoken"
-                  value="LKTw0VId5H60Wx4GlvuXGM5zIpt5xoluKWa54NlaljseNOHYfBUv55v6Xz2XP3VB"
-                />
+              <form action="" method="post">
+                {% csrf_token %}
                 <div class="form-group row pb-3">
                   <label for="colFormLabel" class="col-sm-3 col-form-label"
                     >Request ID:</label
@@ -217,6 +213,7 @@
                       class="form-control"
                       id="colFormLabel"
                       disabled
+                      name="approve"
                       value="{{ request.approve_date|date:'Y-m-d\TH:i'  }}"
                     />
                     {% else %}
@@ -224,6 +221,7 @@
                       type="datetime-local"
                       class="form-control"
                       id="colFormLabel"
+                      name="approve"
                       value="{{ request.approve_date|date:'Y-m-d\TH:i'  }}"
                     />
                     {% endif %}
@@ -239,6 +237,7 @@
                       type="datetime-local"
                       class="form-control"
                       id="colFormLabel"
+                      name="process"
                       value="{{ request.process_date|date:'Y-m-d\TH:i'  }}"
                       disabled
                     />
@@ -247,6 +246,7 @@
                       type="datetime-local"
                       class="form-control"
                       id="colFormLabel"
+                      name="process"
                       value="{{ request.process_date|date:'Y-m-d\TH:i'  }}"
                     />
                     {% endif %}
@@ -262,6 +262,7 @@
                       type="datetime-local"
                       class="form-control"
                       id="colFormLabel"
+                      name="complete"
                       value="{{ request.complete_date|date:'Y-m-d\TH:i'  }}"
                       disabled
                     />
@@ -270,6 +271,7 @@
                       type="datetime-local"
                       class="form-control"
                       id="colFormLabel"
+                      name="complete"
                       value="{{ request.complete_date|date:'Y-m-d\TH:i'  }}"
                     />
                     {% endif %}
@@ -285,6 +287,7 @@
                       type="datetime-local"
                       class="form-control"
                       id="colFormLabel"
+                      name="close"
                       value="{{ request.close_date|date:'Y-m-d\TH:i'  }}"
                       disabled
                     />
@@ -293,6 +296,7 @@
                       type="datetime-local"
                       class="form-control"
                       id="colFormLabel"
+                      name="close"
                       value="{{ request.close_date|date:'Y-m-d\TH:i'  }}"
                     />
                     {% endif %}

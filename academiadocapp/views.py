@@ -154,6 +154,27 @@ def admin_page(request):
 def update_status(request, request_id):
 
     transcript_request = Requests.objects.get(pk=request_id)
+    if request.method == "POST":
+
+        # update the approve date if it exists in the form
+        if request.POST.get('approve', '') != '':
+            transcript_request.approve_date = request.POST.get('approve')
+        # update the process date if it exists in the form
+        if request.POST.get('process', '') != '':
+            transcript_request.process_date = request.POST.get('process')
+        # update the complete date if it exists in the form
+        if request.POST.get('complete', '') != '':
+            transcript_request.complete_date = request.POST.get('complete')
+        # update the close date if it exists in the form
+        if request.POST.get('close', '') != '':
+            transcript_request.close_date = request.POST.get('close')
+        # save the updated request object
+        
+        transcript_request.save()
+
+        messages.success(request, f'Request updated successfully!')
+
+        return redirect('admin-page')
 
     context = {
         'request' : transcript_request,
