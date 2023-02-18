@@ -312,7 +312,7 @@
                       type="text"
                       class="form-control"
                       id="colFormLabel"
-                      name="close"
+                      name="filename"
                       value="{{ file_name }}"
                       disabled
                     />
@@ -321,7 +321,7 @@
                       type="text"
                       class="form-control"
                       id="colFormLabel"
-                      name="close"
+                      name="filename"
                       value=""
                       disabled
                     />
@@ -342,10 +342,15 @@
                 {% endif %}
               </form>
             </div>
+            {% if request.complete_date %}
             <hr />
             <br />
             <div class="form-style">
-              <form method="POST" action="" enctype="multipart/form-data">
+              <form
+                method="POST"
+                action="{% url 'upload' request.id %}"
+                enctype="multipart/form-data"
+              >
                 {% csrf_token %}
                 <div class="form-group row pb-3">
                   {% if request.pdf_file %}
@@ -371,6 +376,7 @@
                 </div>
               </form>
             </div>
+            {% endif %}
           </div>
           <div class="col-2 bg-white"></div>
         </div>

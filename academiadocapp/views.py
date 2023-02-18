@@ -164,17 +164,7 @@ def update_status(request, request_id):
     else:
         file_name = ''
 
-    if request.method == 'POST' and request.FILES['file']:
-        uploaded_file = request.FILES['file']
-        transcript_request.pdf_file = uploaded_file
-
-        transcript_request.save()
-        
-        messages.success(request, f'File Uploaded successfully!')
-
-        return redirect('update-status', request_id)
-
-    elif request.method == "POST":
+    if request.method == "POST":
 
         # update the approve date if it exists in the form
         if request.POST.get('approve', '') != '':
@@ -220,3 +210,24 @@ def download_pdf(request, pk):
             raise Http404
     else:
         return HttpResponse("Sorry, file does not exist")
+
+
+
+@user_passes_test(lambda user: user.is_staff)
+@login_required
+def upload_file(request, request_id):
+
+    transcript_request = Requests.objects.get(pk=request_id)
+
+    if request.method == "POST" and request.FILES['file']:
+
+        uploaded_file = request.FILES['file']
+        transcript_request.pdf_file = uploaded_file
+
+        transcript_request.save()
+        
+        messages.success(request, f'File Uploaded successfully!')
+
+        return redirect('update-status', request_id)
+    
+    return redirect('update-status', request_id)

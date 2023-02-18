@@ -11,5 +11,6 @@ urlpatterns = [
     path('admin-page/', views.admin_page, name='admin-page'),
     path('update/<request_id>/', views.update_status, name='update-status'),
     path('requests/<int:pk>/download/', views.download_pdf, name='download_pdf'),
+    path('upload/<request_id>/', views.upload_file, name='upload'),
 
 ]
