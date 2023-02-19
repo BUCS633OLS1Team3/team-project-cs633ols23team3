@@ -98,6 +98,7 @@
           </div>
         </button>
       </div>
+      {% if request.user.is_staff %}
       <div style="padding-top: 1rem">
         <button
           class="btn btn-secondary btn-lg"
@@ -137,6 +138,7 @@
           </div>
         </button>
       </div>
+      {% endif %}
     </div>
   </div>
 
@@ -210,7 +212,21 @@
               </div>
             </div>
           </div>
+          {% if request.pdf_file %}
+          <div class="bg-white p-2 border rounded px-3 mt-3">
+            <div
+              class="d-flex flex-row justify-content-between align-items-center order"
+            >
+              <div class="d-flex flex-column order-details">
+                <span style="font-weight: bold">Download Transcript: </span
+                >
+                <a href="{% url 'download_pdf' pk=request.id %}">TRR{{ request.reference }}</a>
+              </div>
+            </div>
+          </div>
+          {% endif %}
         </div>
+        
         {% endfor %}
       </div>
       <div class="row mt-5">

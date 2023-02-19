@@ -302,9 +302,35 @@
                     {% endif %}
                   </div>
                 </div>
+                <div class="form-group row pb-3">
+                  <label for="colFormLabel" class="col-sm-3 col-form-label"
+                    >File</label
+                  >
+                  <div class="col-sm-9">
+                    {% if request.pdf_file %}
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="colFormLabel"
+                      name="filename"
+                      value="{{ file_name }}"
+                      disabled
+                    />
+                    {% else %}
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="colFormLabel"
+                      name="filename"
+                      value=""
+                      disabled
+                    />
+                    {% endif %}
+                  </div>
+                </div>
 
                 <br />
-
+                {% if not request.close_date %}
                 <div class="text-center">
                   <button
                     type="submit"
@@ -313,8 +339,44 @@
                     Submit
                   </button>
                 </div>
+                {% endif %}
               </form>
             </div>
+            {% if request.complete_date %}
+            <hr />
+            <br />
+            <div class="form-style">
+              <form
+                method="POST"
+                action="{% url 'upload' request.id %}"
+                enctype="multipart/form-data"
+              >
+                {% csrf_token %}
+                <div class="form-group row pb-3">
+                  {% if request.pdf_file %}
+                  <label for="file" class="col-sm-4 col-form-label"
+                    >Replace Transcript:</label
+                  >
+                  {% else %}
+                  <label for="file" class="col-sm-4 col-form-label"
+                    >Upload Transcript:</label
+                  >
+                  {% endif %}
+                  <div class="col-sm-8">
+                    <input type="file" id="file" name="file" />
+                  </div>
+                  <div class="text-center">
+                    <button
+                      type="submit"
+                      class="btn btn-lg btn-primary btn-block mt-3"
+                    >
+                      Upload
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            {% endif %}
           </div>
           <div class="col-2 bg-white"></div>
         </div>

@@ -74,6 +74,8 @@ class Requests(models.Model):
     process_date = models.DateTimeField(blank=True, null=True)
     complete_date = models.DateTimeField(blank=True, null=True)
     close_date = models.DateTimeField(blank=True, null=True)
+    pdf_file = models.FileField(upload_to='pdfs/', blank=True, null=True)
+
 
 
     class Meta:

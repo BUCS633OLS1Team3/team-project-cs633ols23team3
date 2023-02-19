@@ -1,9 +1,10 @@
 import re
 from venv import create
 from django.contrib.auth import authenticate, login, logout
+from django.http import HttpResponse, Http404, FileResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.core.paginator import Paginator
 from django.db import IntegrityError
 from django.shortcuts import render , redirect
@@ -12,6 +13,7 @@ from django.contrib import messages
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from django.contrib.auth.password_validation import validate_password
+import os
 
 
 
@@ -109,7 +111,7 @@ def logout_view(request):
     messages.warning(request,('Log Out Successful'))
     return redirect('home')
 
-
+@login_required
 def transcript(request):
 
     user = request.user
@@ -124,6 +126,7 @@ def transcript(request):
     return render(request, "academiadocapp/transcript.html")
 
 
+@login_required
 def status(request):
 
     user = request.user
@@ -137,7 +140,8 @@ def status(request):
 
     return render(request, "academiadocapp/status.html", context)
 
-
+@user_passes_test(lambda user: user.is_staff)
+@login_required
 def admin_page(request):
 
     user = request.user
@@ -150,10 +154,16 @@ def admin_page(request):
     }
     return render(request, "academiadocapp/admin.html", context)
 
-
+@user_passes_test(lambda user: user.is_staff)
+@login_required
 def update_status(request, request_id):
 
     transcript_request = Requests.objects.get(pk=request_id)
+    if transcript_request.pdf_file:
+        file_name = transcript_request.pdf_file.name.split('/')[-1]
+    else:
+        file_name = ''
+
     if request.method == "POST":
 
         # update the approve date if it exists in the form
@@ -178,6 +188,46 @@ def update_status(request, request_id):
 
     context = {
         'request' : transcript_request,
+        'file_name': file_name,
     }
     return render(request, "academiadocapp/update.html", context)
 
+
+@login_required
+def download_pdf(request, pk):
+    my_request = get_object_or_404(Requests, pk=pk)
+    if my_request.pdf_file:
+        try:
+            # Open the file in a read-only mode
+            pdf_file = my_request.pdf_file.path
+            with open(pdf_file, 'rb') as fh:
+                # Set the mime type
+                response = HttpResponse(fh.read(), content_type="application/pdf")
+                # Set the file object name
+                response['Content-Disposition'] = 'attachment; filename=' + os.path.basename(pdf_file)
+                return response
+        except IOError:
+            raise Http404
+    else:
+        return HttpResponse("Sorry, file does not exist")
+
+
+
+@user_passes_test(lambda user: user.is_staff)
+@login_required
+def upload_file(request, request_id):
+
+    transcript_request = Requests.objects.get(pk=request_id)
+
+    if request.method == "POST" and request.FILES['file']:
+
+        uploaded_file = request.FILES['file']
+        transcript_request.pdf_file = uploaded_file
+
+        transcript_request.save()
+        
+        messages.success(request, f'File Uploaded successfully!')
+
+        return redirect('update-status', request_id)
+    
+    return redirect('update-status', request_id)
