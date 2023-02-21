@@ -1,7 +1,6 @@
 # team-project-cs633ols23team3
 
 This is the repository for the CS633 OL Spring1 2023 Term Project for Team 3.
-thank you for starting this repository ! good luck with the project !
 
 # AcademiaDoc
 
@@ -53,13 +52,22 @@ Follow the steps below to install an instance of this project.
 ## Screenshots
 
 .
-![App screenshot](static/assets/screenshot1.png)
+![App screenshot](static/assets/screenshot1.jpg)
+.
+![App screenshot](static/assets/screenshot2.jpg)
+.
+![App screenshot](static/assets/screenshot3.jpg)
 
 ## Features
 
 Some unique features of the application are listed below:
 
-- List of key functionalities here>>>
+- User Account Registration and Sign Up
+- Transcript Request Submission
+- Track Status of Request
+- Admin Update Status of Request
+- Upload Transcript Document
+- Download Transcript Document
 
 ## Tech Stack / Built With
 
