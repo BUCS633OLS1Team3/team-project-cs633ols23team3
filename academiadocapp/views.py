@@ -95,7 +95,7 @@ def login_view(request):
             messages.success(request,('Login Successful'))
             return redirect('home')
         else:
-            messages.warning(request,('Error Logging In, Try Again...'))
+            messages.warning(request,('Error Logging In, Re-enter your Username or Password and Try Again...'))
             return redirect('login')
     else:
         user = request.user
